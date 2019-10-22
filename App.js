@@ -3,7 +3,6 @@
 // console.dir({name: 'Michal', age:33});
 
 const https = require('https');
-const username = "michaldobiezynski";
 
 //Function to print message to the console
 
@@ -13,34 +12,29 @@ function printMessage(username, badgeCount, points) {
    console.log(message)
 }
 
-
-
+function getProfile(username) {
 //Connect to the API URL
-const request = https.get(`https://teamtreehouse.com/${username}.json`,
-    response => {
+    const request = https
+        .get(`https://teamtreehouse.com/${username}.json`,
+        response => {
 
-    let body = "";
+            let body = "";
 
+            response.on('data', data => {
 
-        response.on('data', data => {
+                body += data.toString();
+            });
 
-            body += data.toString();
-        });
+            response.on('end', () => {
+                const profile = JSON.parse(body);
+                printMessage(
+                    username,
+                    profile.badges.length,
+                    profile.points.JavaScript)
+            });
+        }
+    );
+}
 
-        response.on('end', () => {
-        const profile = JSON.parse(body);
-        console.log(profile);
-        printMessage(
-            username,
-            profile.badges.length,
-            profile.points.JavaScript)
-        });
-
-
-    }
-
-
-
-
-);
+getProfile("michaldobiezynski");
 
