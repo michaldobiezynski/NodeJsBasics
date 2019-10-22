@@ -21,15 +21,18 @@ const request = https.get(`https://teamtreehouse.com/${username}.json`,
 
     let body = "";
 
-        //Read the data
 
         response.on('data', data => {
 
-           body += data.toString());
+            body += data.toString();
         });
-        //Parse the data
 
-        //Print the data
+        response.on('end', () => {
+
+        console.log(body);
+        
+        });
+
 
     }
 
