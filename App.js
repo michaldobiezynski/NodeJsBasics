@@ -36,5 +36,11 @@ function getProfile(username) {
     );
 }
 
-getProfile("michaldobiezynski");
+const users = ["chalkers", "michaldobiezynski"]
+
+users.forEach(username => {
+    getProfile(username)
+})
+
+
 
