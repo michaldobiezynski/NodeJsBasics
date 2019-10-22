@@ -2,6 +2,10 @@
 // console.error("Ooooops something went wrong..");
 // console.dir({name: 'Michal', age:33});
 
+const https = require('https');
+const username = "michaldobiezynski";
+
+//Function to print message to the console
 
 function printMessage(username, badgeCount, points) {
    const message =  `${username} has ${badgeCount} total ` +
@@ -9,15 +13,18 @@ function printMessage(username, badgeCount, points) {
    console.log(message)
 }
 
-printMessage(
-    "Michal",
-    999,
-    10000);
+
 
 //Connect to the API URL
+const request = https.get(`https://teamtreehouse.com/${username}.json`,
 
-//Read the data
+    console.dir(response)
+    //Read the data
 
 //Parse the data
 
 //Print the data
+
+
+);
+
