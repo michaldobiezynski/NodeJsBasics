@@ -38,9 +38,13 @@ function getProfile(username) {
 
 const users = ["chalkers", "michaldobiezynski"]
 
-users.forEach(username => {
-    getProfile(username)
-})
+// users.forEach(username => {
+// //     getProfile(username)
+// // })
+
+//just use this:
+
+users.forEach(getProfile);
 
 
 
