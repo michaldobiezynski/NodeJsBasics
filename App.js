@@ -30,7 +30,10 @@ const request = https.get(`https://teamtreehouse.com/${username}.json`,
         response.on('end', () => {
         const profile = JSON.parse(body);
         console.log(profile);
-
+        printMessage(
+            username,
+            profile.badges.length,
+            profile.points.JavaScript)
         });
 
 
