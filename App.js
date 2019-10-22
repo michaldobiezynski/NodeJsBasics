@@ -34,6 +34,9 @@ function getProfile(username) {
             });
         }
     );
+    request.on('error',
+            error =>
+                console.error(`Problem with request ${error.message}`));
 }
 
 const users = ["chalkers", "michaldobiezynski"]
