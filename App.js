@@ -24,6 +24,7 @@ function getProfile(username) {
             .get(`https://teamtreehouse.com/${username}.json`,
                 response => {
 
+                if(response.statusCode === 200) {
                     let body = "";
 
                     response.on('data', data => {
@@ -44,7 +45,13 @@ function getProfile(username) {
                         }
 
 
-                    });
+                        });
+                } else {
+                    const message = `There was an error getting the profile ` +
+                    +`for ${username} (${response.statusCode})`;
+                    const statusCodeError = new Error(message);
+                    printError(statusCodeError);
+                }
                 }
             );
         request.on('error',
