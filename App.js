@@ -27,11 +27,18 @@ function getProfile(username) {
                     });
 
                     response.on('end', () => {
-                        const profile = JSON.parse(body);
-                        printMessage(
-                            username,
-                            profile.badges.length,
-                            profile.points.JavaScript)
+
+                        try {
+                            const profile = JSON.parse(body);
+                            printMessage(
+                                username,
+                                profile.badges.length,
+                                profile.points.JavaScript)
+                        } catch (e) {
+                            console.error(e.message);
+                        }
+
+
                     });
                 }
             );
@@ -43,7 +50,7 @@ function getProfile(username) {
     }
 }
 
-const users = ["chalkers", "michaldobiezynski"]
+const users = ["chalkers", "michaldobiezyssnski"]
 
 // users.forEach(username => {
 // //     getProfile(username)
