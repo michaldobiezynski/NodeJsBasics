@@ -4,6 +4,11 @@
 
 const https = require('https');
 
+//print error messages
+function printError(error) {
+    console.error(error.message);
+}
+
 //Function to print message to the console
 
 function printMessage(username, badgeCount, points) {
@@ -35,7 +40,7 @@ function getProfile(username) {
                                 profile.badges.length,
                                 profile.points.JavaScript)
                         } catch (e) {
-                            console.error(e.message);
+                            printError(e);
                         }
 
 
@@ -46,11 +51,11 @@ function getProfile(username) {
             error =>
                 console.error(`Problem with request ${error.message}`));
     } catch (error) {
-        console.error(error.message);
+        printError(error);
     }
 }
 
-const users = ["chalkers", "michaldobiezyssnski"]
+const users = ["chalkers", "michaldobiezynski"]
 
 // users.forEach(username => {
 // //     getProfile(username)
