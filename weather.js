@@ -1,11 +1,9 @@
 const weatherApiKey = "fbcfd7e05f7edae93096af50733bf6ec";
 
-
 const https = require('https');
-const http = require('http');
 
-function getBodyFromWeatherApp() {
-    const request = https.get(`https://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=${weatherApiKey}`,
+function getBodyFromWeatherApp(city, countryCode) {
+    const request = https.get(`https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&appid=${weatherApiKey}`,
         response => {
             let body = "";
 
@@ -22,6 +20,6 @@ function getBodyFromWeatherApp() {
 
 }
 
-getBodyFromWeatherApp();
+// getBodyFromWeatherApp("London", "uk");
 
-module.exports.get = getBodyFromWeatherApp();
+module.exports.get = getBodyFromWeatherApp;
