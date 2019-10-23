@@ -47,8 +47,7 @@ function getProfile(username) {
 
                         });
                 } else {
-                    const message = `There was an error getting the profile ` +
-                    +`for ${username} (${response.statusCode})`;
+                    const message = `There was an error getting the profile for ${username} (${response.statusCode})`;
                     const statusCodeError = new Error(message);
                     printError(statusCodeError);
                 }
@@ -62,7 +61,7 @@ function getProfile(username) {
     }
 }
 
-const users = ["chalkers", "michaldobiezynski"]
+const users = ["chalkers", "michaldobiezynski", "blabla"]
 
 // users.forEach(username => {
 // //     getProfile(username)
