@@ -3,6 +3,7 @@
 // console.dir({name: 'Michal', age:33});
 
 const https = require('https');
+const http = require('http');
 
 //print error messages
 function printError(error) {
@@ -47,7 +48,8 @@ function getProfile(username) {
 
                         });
                 } else {
-                    const message = `There was an error getting the profile for ${username} (${response.statusCode})`;
+                    const message
+                        = `There was an error getting the profile for ${username} (${http.STATUS_CODES[response.statusCode]})`;
                     const statusCodeError = new Error(message);
                     printError(statusCodeError);
                 }
