@@ -1,6 +1,6 @@
 const weatherApiKey = "fbcfd7e05f7edae93096af50733bf6ec";
-
 const https = require('https');
+const http = require('http');
 
 function printWeather(weather) {
     const message = `Current temperature in ${weather.name} is ${weather.main.temp} C`;
