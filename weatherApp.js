@@ -12,7 +12,7 @@ const cities = [
         countryCode: "us"
     },
     {
-        name: "Madrid",
+        name: "Madridss",
         countryCode: "es"
     },
 ];
