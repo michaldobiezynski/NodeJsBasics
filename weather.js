@@ -7,6 +7,10 @@ function printWeather(weather) {
     console.log(message);
 }
 
+function printError(error) {
+    console.error(error.message);
+}
+
 function getBodyFromWeatherApp(city, countryCode) {
     const request = https.get(`https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&appid=${weatherApiKey}&units=metric`,
         response => {
