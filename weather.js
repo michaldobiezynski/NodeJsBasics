@@ -12,21 +12,34 @@ function printError(error) {
 }
 
 function getBodyFromWeatherApp(city, countryCode) {
-    const request = https.get(`https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&appid=${weatherApiKey}&units=metric`,
-        response => {
-            let body = "";
+    try {
+        const request = https.get(`https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&appid=${weatherApiKey}&units=metric`,
+            response => {
 
-            response.on('data', data => {
-                body += data.toString();
-            });
+            if(response.statusCode === 200) {
+                let body = "";
 
-            response.on('end', () => {
-                const weather = JSON.parse(body);
-                printWeather(weather);
-            })
-        } );
+                response.on('data', data => {
+                    body += data.toString();
+                });
+
+                response.on('end', () => {
+                    const weather = JSON.parse(body);
+                    printWeather(weather);
+                })
+            } else {
+                const statusCodeError
+                    = `There was an error getting the message for
+                     ${city} ${countryCode}.
+                     (${http.STATUS_CODES[response.statusCode]})`;
+                printError(statusCodeError);
+            }
+        });
 
 
+    } catch (error) {
+        printError(error);
+    }
 }
 
 // getBodyFromWeatherApp("London", "uk");
